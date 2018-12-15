@@ -7,9 +7,7 @@ package bookstore;
 
 import bookstore.Book.Book;
 import bookstore.Book.BookDAO;
-import bookstore.Detail.detailBook;
 import bookstore.Book.BookService;
-import bookstore.CartBook.CartBook;
 import bookstore.Database.User;
 import bookstore.Register.Register;
 import bookstore.Login.LoginService;
@@ -59,8 +57,7 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        SearchBox = new javax.swing.JComboBox<>();
+        SearchBox = new javax.swing.JComboBox<String>();
         SearchField = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         SearchBut = new javax.swing.JButton();
@@ -95,6 +92,7 @@ public class Main extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 204));
@@ -124,19 +122,10 @@ public class Main extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(210, 0, 80, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/cartW.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(1070, 0, 50, 30);
-
         SearchBox.setBackground(new java.awt.Color(153, 153, 153));
         SearchBox.setFont(new java.awt.Font("Cloud", 1, 14)); // NOI18N
         SearchBox.setForeground(new java.awt.Color(255, 255, 255));
-        SearchBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Writer" }));
+        SearchBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Writer" }));
         SearchBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         SearchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +142,11 @@ public class Main extends javax.swing.JFrame {
         SearchField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SearchFieldMouseClicked(evt);
+            }
+        });
+        SearchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchFieldActionPerformed(evt);
             }
         });
         jPanel1.add(SearchField);
@@ -203,44 +197,24 @@ public class Main extends javax.swing.JFrame {
         P8.setBackground(new java.awt.Color(0, 0, 0));
         P8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/5.jpg"))); // NOI18N
         P8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        P8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showProductDetail4(evt);
-            }
-        });
         getContentPane().add(P8);
         P8.setBounds(690, 460, 120, 160);
 
         P7.setBackground(new java.awt.Color(0, 0, 0));
         P7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/9.jpg"))); // NOI18N
         P7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        P7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showProductDetail3(evt);
-            }
-        });
         getContentPane().add(P7);
         P7.setBounds(480, 460, 120, 160);
 
         P6.setBackground(new java.awt.Color(0, 0, 0));
         P6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/3.jpg"))); // NOI18N
         P6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        P6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showProductDetail2(evt);
-            }
-        });
         getContentPane().add(P6);
         P6.setBounds(270, 460, 120, 160);
 
         P5.setBackground(new java.awt.Color(0, 0, 0));
         P5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/12.jpg"))); // NOI18N
         P5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        P5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showProductDetail1(evt);
-            }
-        });
         getContentPane().add(P5);
         P5.setBounds(60, 460, 120, 160);
 
@@ -270,7 +244,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ABook);
-        ABook.setBounds(720, 430, 200, 20);
+        ABook.setBounds(650, 430, 200, 20);
 
         N8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         N8.setText("ไม่พบข้อมูล");
@@ -344,11 +318,11 @@ public class Main extends javax.swing.JFrame {
 
         passText.setText("Password");
         getContentPane().add(passText);
-        passText.setBounds(920, 50, 58, 44);
+        passText.setBounds(920, 50, 55, 44);
 
         userText.setText("Username");
         getContentPane().add(userText);
-        userText.setBounds(920, 20, 59, 44);
+        userText.setBounds(920, 20, 58, 44);
 
         userField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,9 +330,9 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(userField);
-        userField.setBounds(990, 30, 126, 24);
+        userField.setBounds(990, 30, 126, 22);
         getContentPane().add(passField);
-        passField.setBounds(990, 60, 126, 24);
+        passField.setBounds(990, 60, 126, 22);
 
         statusText.setBackground(new java.awt.Color(255, 255, 255));
         statusText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -387,6 +361,15 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(10, 10, 110, 90);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(880, 170, 79, 25);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -399,9 +382,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchFieldMouseClicked
 
     private void SearchButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButActionPerformed
-        int countBook = SearchBookService.getBookName(SearchBox.getSelectedItem().toString().toLowerCase(), SearchField.getText());
+        int count = SearchBookService.getBookName(SearchBox.getSelectedItem().toString().toLowerCase(), SearchField.getText());
         
-        if (countBook != 0){
+        if (count != 0){
         SearchBookService.resetInformation();
         SearchBook searchBook = new SearchBook();
         System.out.println(SearchBox.getSelectedItem().toString());
@@ -416,7 +399,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
 
-        
+
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void ABookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABookMouseClicked
@@ -437,7 +420,6 @@ public class Main extends javax.swing.JFrame {
         if (check.equals("admin") || check.equals("user")) {
             System.out.println(check);
             setUser(check);
-            User.setStatus();
         } else {
             System.out.println("none");
         }
@@ -467,38 +449,12 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_userFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void showProductDetail1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProductDetail1
-        detailBook detailBook = new detailBook();
-        detailBook.openProductDetailUI(P5.getText());
-    }//GEN-LAST:event_showProductDetail1
-
-    private void showProductDetail2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProductDetail2
-        detailBook detailBook = new detailBook();
-        detailBook.openProductDetailUI(P6.getText());
-    }//GEN-LAST:event_showProductDetail2
-
-    private void showProductDetail3(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProductDetail3
-        detailBook detailBook = new detailBook();
-        detailBook.openProductDetailUI(P7.getText());
-    }//GEN-LAST:event_showProductDetail3
-
-    private void showProductDetail4(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProductDetail4
-       detailBook detailBook = new detailBook();
-        detailBook.openProductDetailUI(P8.getText());
-    }//GEN-LAST:event_showProductDetail4
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        CartBook cart = new CartBook();
-        if (User.getStatus()){
-            cart.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "Please Login");
-        }
+    private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
         
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_SearchFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -554,6 +510,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> SearchBox;
     private javax.swing.JButton SearchBut;
     private javax.swing.JTextField SearchField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -561,7 +518,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -576,10 +532,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField userField;
     private javax.swing.JLabel userText;
     // End of variables declaration//GEN-END:variables
-    
-    private void showProductDetail(String bookId){
-    }
-    
+
     void setUser(String check) {
         User.setUser(userField.getText(), passField.getText(), check);
         statusText.setText(check);
@@ -654,5 +607,18 @@ public class Main extends javax.swing.JFrame {
 
         }
     }
+    
+    void CheckBook(){
+    
+        String usertype = "";
+        
+        MongoCollection<Document> room = db.getCollection("user");
 
+        
+        Document updateQuery = new Document("user_id","8888888");
+        room.deleteOne(updateQuery);
+
+
+         
+    }
 }

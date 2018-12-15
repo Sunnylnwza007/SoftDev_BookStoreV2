@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class BookService {
     public static void getBook(int i){
-        BookDAO.getBook(i);
+        BookDAO.getBookById(i);
     };
     
 }

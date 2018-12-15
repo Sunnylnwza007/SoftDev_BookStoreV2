@@ -16,9 +16,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CartBook extends javax.swing.JFrame {
 
-    Cart c;
-    DefaultTableModel dtm;
-    Address ad = new Address();
+    Cart cart;
+    DefaultTableModel tableModel;
+    Address address = new Address();
 
     /**
      * Creates new form CartBook
@@ -73,7 +73,7 @@ public class CartBook extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel1.setText("ราคาทั้งหมด");
+        jLabel1.setText("Total Price");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(710, 400, 80, 20);
 
@@ -83,9 +83,9 @@ public class CartBook extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sum);
-        sum.setBounds(790, 390, 100, 30);
+        sum.setBounds(780, 390, 100, 30);
 
-        jLabel2.setText("บาท");
+        jLabel2.setText("Baht");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(910, 400, 41, 16);
 
@@ -105,7 +105,7 @@ public class CartBook extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(460, 450, 160, 40);
+        jButton3.setBounds(490, 450, 160, 40);
 
         jButton4.setText("Delete");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -135,21 +135,21 @@ public class CartBook extends javax.swing.JFrame {
         jScrollPane1.setBounds(30, 130, 940, 240);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel4.setText("ที่อยู่จัดส่ง");
+        jLabel4.setText("Shipping address");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 380, 80, 21);
+        jLabel4.setBounds(30, 380, 140, 21);
 
-        jLabel5.setText("หมู่");
+        jLabel5.setText("Village No.");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(70, 470, 20, 16);
+        jLabel5.setBounds(20, 470, 80, 16);
 
-        jLabel6.setText("บ้านเลขที่");
+        jLabel6.setText("Home number");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 410, 60, 16);
+        jLabel6.setBounds(20, 410, 100, 16);
 
-        jLabel7.setText("ตำบล");
+        jLabel7.setText("Sub-district");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(60, 440, 40, 16);
+        jLabel7.setBounds(20, 440, 90, 16);
 
         mo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,29 +163,29 @@ public class CartBook extends javax.swing.JFrame {
         getContentPane().add(tumbon);
         tumbon.setBounds(110, 440, 120, 24);
 
-        jLabel8.setText("อำเภอ");
+        jLabel8.setText("District");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(260, 410, 40, 16);
+        jLabel8.setBounds(250, 410, 50, 16);
         getContentPane().add(aumper);
-        aumper.setBounds(310, 410, 120, 24);
+        aumper.setBounds(330, 410, 120, 24);
 
-        jLabel9.setText("จังหวัด");
+        jLabel9.setText("Province");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(260, 440, 40, 16);
+        jLabel9.setBounds(250, 440, 60, 16);
         getContentPane().add(provide);
-        provide.setBounds(310, 440, 120, 24);
+        provide.setBounds(330, 440, 120, 24);
 
-        jLabel10.setText("ไปรษณีย์");
+        jLabel10.setText("Postal Code");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(250, 470, 60, 16);
+        jLabel10.setBounds(250, 470, 70, 16);
         getContentPane().add(postcode);
-        postcode.setBounds(310, 470, 120, 24);
+        postcode.setBounds(330, 470, 120, 24);
 
-        jLabel11.setText("เบอร์");
+        jLabel11.setText("Tel");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(450, 410, 40, 16);
+        jLabel11.setBounds(460, 410, 40, 16);
         getContentPane().add(tel);
-        tel.setBounds(490, 410, 120, 24);
+        tel.setBounds(510, 410, 120, 24);
 
         jButton5.setText("Buy");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -217,8 +217,8 @@ public class CartBook extends javax.swing.JFrame {
     }//GEN-LAST:event_moActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        CartService cs = new CartService();
-        c = cs.searchCart(User.getName());
+        CartService cartService = new CartService();
+        cart = cartService.searchCart(User.getName());
         setTable();
         setSum();
         setAddress();
@@ -229,9 +229,9 @@ public class CartBook extends javax.swing.JFrame {
         String bookName = table.getValueAt(table.getSelectedRow(), 0).toString();
         String num = table.getValueAt(table.getSelectedRow(), 1).toString();
         String price = table.getValueAt(table.getSelectedRow(), 2).toString();
-        CartService cs = new CartService();
-        cs.deleteBook(bookName, num, price);
-        c.delList(table.getSelectedRow());
+        CartService cartService = new CartService();
+        cartService.deleteBook(bookName, num, price);
+        cart.delList(table.getSelectedRow());
         setTable();
         setSum();
         JOptionPane.showMessageDialog(null, "ลบข้อมูลเรียบร้อย");
@@ -239,15 +239,15 @@ public class CartBook extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        ad.setHouseNum(houseNum.getText());
-        ad.setMo(mo.getText());
-        ad.setTumbon(tumbon.getText());
-        ad.setAumper(aumper.getText());
-        ad.setProvide(provide.getText());
-        ad.setPostcode(postcode.getText());
-        ad.setTel(tel.getText());
+        address.setHouseNum(houseNum.getText());
+        address.setMo(mo.getText());
+        address.setTumbon(tumbon.getText());
+        address.setAumper(aumper.getText());
+        address.setProvide(provide.getText());
+        address.setPostcode(postcode.getText());
+        address.setTel(tel.getText());
         CartService cs = new CartService();
-        cs.addAddress(ad, User.getName());
+        cs.addAddress(address, User.getName());
         JOptionPane.showMessageDialog(null, "บันทึกข้อมูลเรียบร้อย");
 
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -288,24 +288,24 @@ public class CartBook extends javax.swing.JFrame {
     }
 
     public void setTable() {
-        System.out.println(c.getBookName(0));
-        System.out.println(c.getNum(0));
-        System.out.println(c.getPrice(0));
+        System.out.println(cart.getBookName(0));
+        System.out.println(cart.getNum(0));
+        System.out.println(cart.getPrice(0));
         String[] tblHead = {"Book Name", "Qty", "Peice"};
-        dtm = new DefaultTableModel(tblHead, 0);
-        for (int i = 0; i < c.count(); i++) {
-            String[] item = {c.getBookName(i), c.getNum(i), c.getPrice(i)};
-            dtm.addRow(item);
+        tableModel = new DefaultTableModel(tblHead, 0);
+        for (int i = 0; i < cart.count(); i++) {
+            String[] item = {cart.getBookName(i), cart.getNum(i), cart.getPrice(i)};
+            tableModel.addRow(item);
         }
-        table.setModel(dtm);
+        table.setModel(tableModel);
 
     }
 
     public void setSum() {
         int sumPrice = 0;
-        for (int count = 0; count < dtm.getRowCount(); count++) {
-            int num = Integer.parseInt(dtm.getValueAt(count, 1).toString());
-            int price = Integer.parseInt(dtm.getValueAt(count, 2).toString());
+        for (int count = 0; count < tableModel.getRowCount(); count++) {
+            int num = Integer.parseInt(tableModel.getValueAt(count, 1).toString());
+            int price = Integer.parseInt(tableModel.getValueAt(count, 2).toString());
             sumPrice += num * price;
         }
         sum.setText(String.valueOf(sumPrice));
@@ -314,14 +314,14 @@ public class CartBook extends javax.swing.JFrame {
 
     public void setAddress() {
         CartService cs = new CartService();
-        ad = cs.setAddress(User.getName());
-        houseNum.setText(ad.getHouseNum());
-        mo.setText(ad.getMo());
-        tumbon.setText(ad.getTumbon());
-        aumper.setText(ad.getAumper());
-        provide.setText(ad.getProvide());
-        postcode.setText(ad.getPostcode());
-        tel.setText(ad.getTel());
+        address = cs.setAddress(User.getName());
+        houseNum.setText(address.getHouseNum());
+        mo.setText(address.getMo());
+        tumbon.setText(address.getTumbon());
+        aumper.setText(address.getAumper());
+        provide.setText(address.getProvide());
+        postcode.setText(address.getPostcode());
+        tel.setText(address.getTel());
 
     }
 

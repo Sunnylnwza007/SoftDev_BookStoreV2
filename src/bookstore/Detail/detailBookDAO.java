@@ -54,7 +54,7 @@ public class detailBookDAO {
         } finally {}
     }
      
-    public void addToCartDB(String user, String bookName, String num, String price){
+    public void setToCartDB(String user, String bookName, String num, String price){
         MongoCollection<Document> book = db.getCollection("cart");
         Document findCart = new Document("user",user);
         Document insert = new Document("user",user).append("bookname", bookName).append("num", num).append("price", price);

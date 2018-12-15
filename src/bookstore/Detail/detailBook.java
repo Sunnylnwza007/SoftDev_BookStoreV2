@@ -91,45 +91,45 @@ public class detailBook extends javax.swing.JFrame {
         getContentPane().add(numOrderSpinner);
         numOrderSpinner.setBounds(600, 450, 60, 30);
 
-        jLabel1.setText("สำนักพิมพ์");
+        jLabel1.setText("Publisher");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(390, 110, 90, 30);
 
-        jLabel2.setText("ผู้เขียน");
+        jLabel2.setText("Author");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(390, 160, 60, 20);
 
-        jLabel3.setText("ประเภท");
+        jLabel3.setText("Type");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(390, 210, 70, 20);
 
-        jLabel4.setText("ราคา");
+        jLabel4.setText("Price");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(390, 260, 50, 20);
 
-        jLabel5.setText("สถานะ");
+        jLabel5.setText("Status");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(390, 310, 60, 20);
 
-        jLabel6.setText("จำนวนที่สั่ง");
+        jLabel6.setText("Order number");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(500, 460, 100, 20);
+        jLabel6.setBounds(480, 460, 100, 20);
 
         jLabel7.setText("ISBN");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(670, 120, 50, 20);
 
-        jLabel8.setText("จำนวนหน้า");
+        jLabel8.setText("Number of pages");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(670, 164, 70, 20);
+        jLabel8.setBounds(640, 170, 110, 20);
 
-        jLabel9.setText("ครั้งที่พิมพ์");
+        jLabel9.setText("Print");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(670, 210, 70, 30);
+        jLabel9.setBounds(660, 220, 70, 30);
 
-        jLabel10.setText("ปีที่พิมพ์");
+        jLabel10.setText("Published year");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(670, 264, 60, 20);
+        jLabel10.setBounds(660, 270, 60, 20);
         getContentPane().add(imagelb);
         imagelb.setBounds(70, 70, 270, 350);
 
@@ -169,11 +169,11 @@ public class detailBook extends javax.swing.JFrame {
 
         numPagelb.setText("1");
         getContentPane().add(numPagelb);
-        numPagelb.setBounds(760, 164, 160, 20);
+        numPagelb.setBounds(760, 170, 160, 20);
 
         writeNumlb.setText("1");
         getContentPane().add(writeNumlb);
-        writeNumlb.setBounds(760, 210, 130, 30);
+        writeNumlb.setBounds(760, 220, 130, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -18,15 +18,15 @@ import org.bson.Document;
  */
 public class BookDAO {
     
-    public static void getBook(int i){
+    public static void getBookById(int i){
         
-        String setOfBook = "";
         MongoCollection<Document> room = db.getCollection("book");
         Document findBook = new Document("book_id",Integer.toString(i));
         MongoCursor<Document> cursor = room.find(findBook).iterator();
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
+                
                 String book_id = doc.getString("book_id");
                 String name = doc.getString("name");
                 String price = doc.getString("price");
@@ -36,7 +36,8 @@ public class BookDAO {
                 String writeyear = doc.getString("writeyear");
                 String page = doc.getString("page");
                 String isbn = doc.getString("isbn");
-                
+                String amount = doc.getString("amount");
+                String writenum = doc.getString("writenum");
                 
                 Book.setId(book_id);
                 Book.setName(name);
@@ -47,6 +48,8 @@ public class BookDAO {
                 Book.setWriteyear(writeyear);
                 Book.setPage(page);
                 Book.setISBN(isbn);
+                Book.setAmount(amount);
+                Book.setWritenum(writenum);
            
        
             }

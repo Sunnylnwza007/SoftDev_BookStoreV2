@@ -20,14 +20,14 @@ public class detailBookService {
     }
     
     public void addToCart(String user, String bookName, String num, String price){
-        if(checkLogin() && checkAmountOfStock(num)){
+        if(checkLogin() && checkBookAmount(num)){
             detailBookDAO detail = new detailBookDAO();
-            detail.addToCartDB(user ,bookName, num, price);
+            detail.setToCartDB(user ,bookName, num, price);
             JOptionPane.showMessageDialog(null, "add complete!!"); 
         }     
     }
     
-    public Boolean checkAmountOfStock(String num){
+    public Boolean checkBookAmount(String num){
         if(Integer.parseInt(num) > Integer.parseInt(Book.getAmount())){
               JOptionPane.showMessageDialog(null, "Product is not enough."); 
               return false;

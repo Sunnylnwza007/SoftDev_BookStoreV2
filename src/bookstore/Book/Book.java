@@ -10,8 +10,9 @@ package bookstore.Book;
  * @author Nitipon Chingthong
  */
 public class Book {
-    public static String id, name, publisher, writer, type, price, writenum, writeyear, page, amount, ISBN;
+     public static String id="", name="", publisher="", writer="", type="", price="", writenum="", writeyear="", page="", amount="", ISBN="";
 
+    
     public static String getISBN() {
         return ISBN;
     }
@@ -99,6 +100,5 @@ public class Book {
     public static void setAmount(String amount) {
         Book.amount = amount;
     }
-    
     
 }
