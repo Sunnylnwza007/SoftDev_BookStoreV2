@@ -31,17 +31,19 @@ public class UserDAO {
     public static MongoDatabase db = client.getDatabase(uri.getDatabase());
     
     public static String checkUser(String username , String password){
-        String usertype="";
-        MongoCollection<Document> room = db.getCollection("user");
+        String usertype = "";
+        MongoCollection <Document> room = db.getCollection("user");
         Document findUser = new Document("username",username).append("password", password);
-        MongoCursor<Document> cursor = room.find(findUser).iterator();
+        MongoCursor <Document> cursor = room.find(findUser).iterator();
+        
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
                 usertype = doc.getString("usertype");            
        
             }
-        } finally {}
+        } 
+         finally {}
          return usertype;
     }
     

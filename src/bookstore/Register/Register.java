@@ -40,7 +40,7 @@ public class Register extends javax.swing.JFrame {
         email1 = new javax.swing.JTextField();
         ja2 = new javax.swing.JLabel();
         password1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -126,9 +126,9 @@ public class Register extends javax.swing.JFrame {
         getContentPane().add(password1);
         password1.setBounds(570, 390, 220, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/1200-110.PNG"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 1200, 110);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/REgister.PNG"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 1200, 110);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,7 +206,7 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField email1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel ja;
     private javax.swing.JLabel ja1;
     private javax.swing.JLabel ja2;

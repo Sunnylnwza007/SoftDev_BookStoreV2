@@ -11,8 +11,11 @@ import java.util.Map;
  * @author Nitipon Chingthong
  */
 public class BookService {
-    public static void getBook(int i){
+    public static void getBook (int i) {
         BookDAO.getBookById(i);
     };
     
+    public static int getCountAllBook() {
+        return BookDAO.getCountAllBook();
+    }
 }

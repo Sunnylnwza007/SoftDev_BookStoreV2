@@ -85,11 +85,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xe04;&#xe49;&#xe19;&#xe2b;&#xe32;"/>
+                <Property name="text" type="java.lang.String" value="Search"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="0" width="40" height="30"/>
+                  <AbsoluteConstraints x="10" y="0" width="70" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -153,7 +153,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="-&#xe1e;&#xe34;&#xe21;&#xe1e;&#xe4c;&#xe40;&#xe1e;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe49;&#xe19;&#xe2b;&#xe32;-"/>
+            <Property name="text" type="java.lang.String" value="-Type to search-"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder/>
@@ -198,7 +198,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Cloud" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#xe04;&#xe49;&#xe19;&#xe2b;&#xe32;"/>
+            <Property name="text" type="java.lang.String" value="Search"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder/>
@@ -206,6 +206,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SearchButMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchButActionPerformed"/>
           </Events>
           <Constraints>
@@ -349,7 +350,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Cloud Light" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe2b;&#xe19;&#xe31;&#xe07;&#xe2a;&#xe37;&#xe2d;&#xe41;&#xe19;&#xe30;&#xe19;&#xe33;"/>
+        <Property name="text" type="java.lang.String" value="Recommend Books"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -382,7 +383,7 @@
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="&#xe14;&#xe39;&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;&#xe40;&#xe15;&#xe34;&#xe21; &gt;&gt;"/>
+        <Property name="text" type="java.lang.String" value="View more products &gt;&gt;"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ABookMouseClicked"/>

@@ -5,6 +5,7 @@
  */
 package bookstore;
 
+import bookstore.AllBook.AllBook;
 import bookstore.Book.Book;
 import bookstore.Book.BookDAO;
 import bookstore.Detail.detailBook;
@@ -117,9 +118,9 @@ public class Main extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Cloud", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ค้นหา");
+        jLabel1.setText("Search");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(20, 0, 40, 30);
+        jLabel1.setBounds(10, 0, 70, 30);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(210, 0, 80, 30);
@@ -148,7 +149,7 @@ public class Main extends javax.swing.JFrame {
 
         SearchField.setFont(new java.awt.Font("Cloud", 1, 14)); // NOI18N
         SearchField.setForeground(new java.awt.Color(153, 153, 153));
-        SearchField.setText("-พิมพ์เพื่อค้นหา-");
+        SearchField.setText("-Type to search-");
         SearchField.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         SearchField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,8 +168,13 @@ public class Main extends javax.swing.JFrame {
 
         SearchBut.setBackground(new java.awt.Color(255, 0, 0));
         SearchBut.setFont(new java.awt.Font("Cloud", 1, 14)); // NOI18N
-        SearchBut.setText("ค้นหา");
+        SearchBut.setText("Search");
         SearchBut.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        SearchBut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SearchButMouseClicked(evt);
+            }
+        });
         SearchBut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchButActionPerformed(evt);
@@ -245,7 +251,7 @@ public class Main extends javax.swing.JFrame {
         P5.setBounds(60, 460, 120, 160);
 
         jLabel7.setFont(new java.awt.Font("Cloud Light", 1, 18)); // NOI18N
-        jLabel7.setText("หนังสือแนะนำ");
+        jLabel7.setText("Recommend Books");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(20, 420, 230, 30);
 
@@ -257,7 +263,7 @@ public class Main extends javax.swing.JFrame {
         ABook.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         ABook.setForeground(new java.awt.Color(255, 0, 0));
         ABook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ABook.setText("ดูรายการสินค้าเพิ่มเติม >>");
+        ABook.setText("View more products >>");
         ABook.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ABookMouseClicked(evt);
@@ -399,46 +405,56 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchFieldMouseClicked
 
     private void SearchButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButActionPerformed
-        int countBook = SearchBookService.getBookName(SearchBox.getSelectedItem().toString().toLowerCase(), SearchField.getText());
         
-        if (countBook != 0){
-        SearchBookService.resetInformation();
-        SearchBook searchBook = new SearchBook();
-        System.out.println(SearchBox.getSelectedItem().toString());
-        searchBook.setTxtSearch(SearchBox.getSelectedItem().toString().toLowerCase(), SearchField.getText());
+        if ( !SearchField.getText().equals("")) {
+            int countBook = SearchBookService.getBookName(SearchBox.getSelectedItem().toString().toLowerCase(),
+                    SearchField.getText());
         
-        searchBook.setVisible(true);
-        this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "Mai Jer Book Na Ja");
+            if ( countBook != 0 ) {
+                SearchBookService.resetInformation();
+                SearchBook searchBook = new SearchBook();
+                searchBook.setTxtSearch(SearchBox.getSelectedItem().toString().toLowerCase(), SearchField.getText());
+        
+                searchBook.setVisible(true);
+                this.setVisible(false);
+            }
+            else {
+                JOptionPane.showMessageDialog( null, "Book Not Found" );
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog( null, "Please enter a text");
         }
     }//GEN-LAST:event_SearchButActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-
-        
+   
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void ABookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABookMouseClicked
-
+        AllBook allBook = new AllBook();
+        allBook.show();
+        setVisible(false);
     }//GEN-LAST:event_ABookMouseClicked
 
     private void ABookMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABookMouseEntered
-        ABook.setText("<HTML><U>ดูรายการสินค้าเพิ่มเติม >></U></HTML>");
+        ABook.setText("<HTML><U>View more products >> >></U></HTML>");
     }//GEN-LAST:event_ABookMouseEntered
 
     private void ABookMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ABookMouseExited
-        ABook.setText("ดูรายการสินค้าเพิ่มเติม >>");
+        ABook.setText("View more products >> >>");
     }//GEN-LAST:event_ABookMouseExited
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         String check = " ";
         check = LoginService.checkUser(userField.getText(), passField.getText());
+        
         if (check.equals("admin") || check.equals("user")) {
             System.out.println(check);
             setUser(check);
             User.setStatus();
-        } else {
+        }
+        else {
             System.out.println("none");
         }
         JOptionPane.showMessageDialog(null, check);
@@ -486,7 +502,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_showProductDetail3
 
     private void showProductDetail4(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showProductDetail4
-       detailBook detailBook = new detailBook();
+        detailBook detailBook = new detailBook();
         detailBook.openProductDetailUI(P8.getText());
     }//GEN-LAST:event_showProductDetail4
 
@@ -494,11 +510,16 @@ public class Main extends javax.swing.JFrame {
         CartBook cart = new CartBook();
         if (User.getStatus()){
             cart.setVisible(true);
-        }else{
+        }
+        else {
             JOptionPane.showMessageDialog(null, "Please Login");
         }
         
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void SearchButMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchButMouseClicked
 
     /**
      * @param args the command line arguments
@@ -605,15 +626,17 @@ public class Main extends javax.swing.JFrame {
 
     void showBanner() {
         timesec++;
-        if (timesec == 3) {
+        if ( timesec == 3 ) {
             Banner.setIcon(new javax.swing.ImageIcon(".\\src\\Pic\\Ban1.jpg"));
-        } else if (timesec == 2) {
+        } 
+        else if ( timesec == 2 ) {
             Banner.setIcon(new javax.swing.ImageIcon(".\\src\\Pic\\Ban2.jpg"));
-        } else {
+        } 
+        else {
             Banner.setIcon(new javax.swing.ImageIcon(".\\src\\Pic\\NewBook.jpg"));
         }
 
-        if (timesec == 3) {
+        if ( timesec == 3 ) {
             timesec = 0;
         }
         System.out.println(timesec);
@@ -621,36 +644,38 @@ public class Main extends javax.swing.JFrame {
 
     void showBook() {
         
-        for (int i = 1 ; i < 5 ; i++){
+        for ( int i = 1 ; i < 5 ; i++ ) {
             
-        SearchBookService.getBook(i);
+            SearchBookService.getBook(i);
             
-        if (i == 1){
-           
-        ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
-        Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
-        P5.setIcon(new javax.swing.ImageIcon(scaleImage));
-        N5.setText(Book.getName());
-        M5.setText("ราคา : " + Book.getPrice());
-        }else if (i == 2){
-        ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
-        Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
-        P6.setIcon(new javax.swing.ImageIcon(scaleImage));
-        N6.setText(Book.getName());
-        M6.setText("ราคา : " + Book.getPrice());
-        }else if (i == 3){
-        ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
-        Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
-        P7.setIcon(new javax.swing.ImageIcon(scaleImage)); 
-        N7.setText(Book.getName());
-        M7.setText("ราคา : " + Book.getPrice());
-        }else if (i == 4){
-        ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
-        Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
-        P8.setIcon(new javax.swing.ImageIcon(scaleImage));  
-        N8.setText(Book.getName());
-        M8.setText("ราคา : " + Book.getPrice());
-        }
+            if ( i == 1 ) {       
+                ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
+                Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                P5.setIcon(new javax.swing.ImageIcon(scaleImage));
+                N5.setText(Book.getName());
+                M5.setText("Price : " + Book.getPrice());
+            }
+            else if ( i == 2 ) {          
+                ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
+                Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                P6.setIcon(new javax.swing.ImageIcon(scaleImage));
+                N6.setText(Book.getName());
+                M6.setText("Price : " + Book.getPrice());
+            }
+            else if ( i == 3 ) {         
+                ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
+                Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                P7.setIcon(new javax.swing.ImageIcon(scaleImage)); 
+                N7.setText(Book.getName());
+                M7.setText("Price : " + Book.getPrice());
+            }
+            else if ( i == 4 ) {          
+                ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + Book.getId() + ".jpg");
+                Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                P8.setIcon(new javax.swing.ImageIcon(scaleImage));  
+                N8.setText(Book.getName());
+                M8.setText("Price : " + Book.getPrice());
+            }
 
         }
     }

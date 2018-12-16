@@ -16,11 +16,12 @@ import org.bson.Document;
  * @author Nitipon Chingthong
  */
 public class detailBookDAO {
-     public void getBookByProduct(String i){
+     public void getBookByProduct (String i) {
         
         MongoCollection<Document> book = db.getCollection("book");
-        Document findBook = new Document("book_id",i);
+        Document findBook = new Document("book_id", i );
         MongoCursor<Document> cursor = book.find(findBook).iterator();
+        
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
@@ -35,8 +36,7 @@ public class detailBookDAO {
                 String isbn = doc.getString("isbn");
                 String writenum = doc.getString("writenum");
                 String amount = doc.getString("amount");
-                
-                
+                               
                 Book.setId(book_id);
                 Book.setName(name);
                 Book.setPrice(price);
@@ -48,18 +48,18 @@ public class detailBookDAO {
                 Book.setISBN(isbn);
                 Book.setWritenum(writenum);
                 Book.setAmount(amount);
-           
-       
+     
             }
-        } finally {}
+        }
+         finally {}
     }
      
-    public void setToCartDB(String user, String bookName, String num, String price){
+    public void setToCartDB (String user, String bookName, String num, String price) {
         MongoCollection<Document> book = db.getCollection("cart");
-        Document findCart = new Document("user",user);
-        Document insert = new Document("user",user).append("bookname", bookName).append("num", num).append("price", price);
+        Document findCart = new Document("user", user);
+        Document insert = new Document("user", user).append("bookname", bookName).append("num", num).append("price", price);
         
-            book.insertOne(insert);
+        book.insertOne(insert);
         
     }
 }

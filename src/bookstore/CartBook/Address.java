@@ -11,10 +11,10 @@ package bookstore.CartBook;
  */
 public class Address {
     String houseNum;
-    String mo;
-    String tumbon;
-    String aumper;
-    String provide;
+    String villageNo;
+    String subDistrict;
+    String district;
+    String province;
     String postcode;
     String tel;
 
@@ -26,36 +26,36 @@ public class Address {
         this.houseNum = houseNum;
     }
 
-    public String getMo() {
-        return mo;
+    public String getVillageNo() {
+        return villageNo;
     }
 
-    public void setMo(String mo) {
-        this.mo = mo;
+    public void setVillageNo(String mo) {
+        this.villageNo = mo;
     }
 
-    public String getTumbon() {
-        return tumbon;
+    public String getSubDistrict() {
+        return subDistrict;
     }
 
-    public void setTumbon(String tumbon) {
-        this.tumbon = tumbon;
+    public void setSubDistrict(String tumbon) {
+        this.subDistrict = tumbon;
     }
 
-    public String getAumper() {
-        return aumper;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setAumper(String aumper) {
-        this.aumper = aumper;
+    public void setDistrict(String aumper) {
+        this.district = aumper;
     }
 
-    public String getProvide() {
-        return provide;
+    public String getProvince() {
+        return province;
     }
 
-    public void setProvide(String provide) {
-        this.provide = provide;
+    public void setProvince(String provide) {
+        this.province = provide;
     }
 
     public String getPostcode() {

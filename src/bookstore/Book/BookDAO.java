@@ -6,8 +6,11 @@
 package bookstore.Book;
 
 import static bookstore.Database.UserDAO.db;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 import java.util.HashMap;
 import java.util.Map;
 import org.bson.Document;
@@ -18,11 +21,12 @@ import org.bson.Document;
  */
 public class BookDAO {
     
-    public static void getBookById(int i){
+    public static void getBookById (int i) {
         
-        MongoCollection<Document> room = db.getCollection("book");
+        MongoCollection<Document> book = db.getCollection("book");
         Document findBook = new Document("book_id",Integer.toString(i));
-        MongoCursor<Document> cursor = room.find(findBook).iterator();
+        MongoCursor<Document> cursor = book.find(findBook).iterator();
+        
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
@@ -53,7 +57,30 @@ public class BookDAO {
            
        
             }
-        } finally {}
+        } 
+         finally {}
+         
+    }
+    public static MongoClientURI uri  = new MongoClientURI("mongodb://user01:user01@ds145563.mlab.com:45563/book_shop"); 
+    public static MongoClient client = new MongoClient(uri);
+    public static MongoDatabase db = client.getDatabase(uri.getDatabase());
+    
+    public static int getCountAllBook() {
+
+        MongoCollection<Document> book = db.getCollection("book");
+        Document findBook= new Document();
+        MongoCursor<Document> cursor = book.find(findBook).iterator();
+        int countAllBook = 0;
+        
+         try {
+            while ( cursor.hasNext() ) {
+              cursor.next();
+                    countAllBook++;
+       
+            }
+        } 
+         finally {}
+         return countAllBook;
     }
     
     

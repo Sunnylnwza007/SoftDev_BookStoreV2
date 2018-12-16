@@ -10,14 +10,15 @@ package bookstore.Book;
  * @author Nitipon Chingthong
  */
 public class Book {
-     public static String id="", name="", publisher="", writer="", type="", price="", writenum="", writeyear="", page="", amount="", ISBN="";
+     public static String id="", name="", publisher="", writer="", 
+                          type="", price="", writenum="", writeyear="", 
+                          page="", amount="", ISBN="";
 
-    
     public static String getISBN() {
         return ISBN;
     }
 
-    public static void setISBN(String ISBN) {
+    public static void setISBN (String ISBN) {
         Book.ISBN = ISBN;
     }
 
@@ -25,7 +26,7 @@ public class Book {
         return id;
     }
 
-    public static void setId(String id) {
+    public static void setId (String id) {
         Book.id = id;
     }
 
@@ -33,7 +34,7 @@ public class Book {
         return name;
     }
 
-    public static void setName(String name) {
+    public static void setName (String name) {
         Book.name = name;
     }
 
@@ -41,7 +42,7 @@ public class Book {
         return publisher;
     }
 
-    public static void setPublisher(String publisher) {
+    public static void setPublisher (String publisher) {
         Book.publisher = publisher;
     }
 
@@ -49,7 +50,7 @@ public class Book {
         return writer;
     }
 
-    public static void setWriter(String writer) {
+    public static void setWriter (String writer) {
         Book.writer = writer;
     }
 
@@ -57,7 +58,7 @@ public class Book {
         return type;
     }
 
-    public static void setType(String type) {
+    public static void setType (String type) {
         Book.type = type;
     }
 
@@ -65,7 +66,7 @@ public class Book {
         return price;
     }
 
-    public static void setPrice(String price) {
+    public static void setPrice (String price) {
         Book.price = price;
     }
 
@@ -73,7 +74,7 @@ public class Book {
         return writenum;
     }
 
-    public static void setWritenum(String writenum) {
+    public static void setWritenum (String writenum) {
         Book.writenum = writenum;
     }
 
@@ -81,7 +82,7 @@ public class Book {
         return writeyear;
     }
 
-    public static void setWriteyear(String writeyear) {
+    public static void setWriteyear (String writeyear) {
         Book.writeyear = writeyear;
     }
 
@@ -89,7 +90,7 @@ public class Book {
         return page;
     }
 
-    public static void setPage(String page) {
+    public static void setPage (String page) {
         Book.page = page;
     }
 
@@ -97,7 +98,7 @@ public class Book {
         return amount;
     }
 
-    public static void setAmount(String amount) {
+    public static void setAmount (String amount) {
         Book.amount = amount;
     }
     

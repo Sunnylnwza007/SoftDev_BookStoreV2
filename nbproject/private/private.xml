@@ -3,21 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Main.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Login/LoginService.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Database/UserDAO.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/CartBook/CartBook.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Database/User.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Book/Book.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Book/BookService.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/AllBook/AllBook.java</file>
+            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Bill/BillDao.java</file>
+            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Bill/Bill.java</file>
+            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Bill/insert.java</file>
             <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/CartBook/CartDao.java</file>
             <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/CartBook/Cart.java</file>
+            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/CartBook/CartBook.java</file>
             <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/CartBook/CartService.java</file>
             <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/CartBook/Address.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Detail/detailBook.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Book/BookDAO.java</file>
-            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Detail/detailBookDAO.java</file>
+            <file>file:/D:/netbean/BookStore/SoftDev_BookStore/src/bookstore/Database/User.java</file>
         </group>
     </open-files>
 </project-private>

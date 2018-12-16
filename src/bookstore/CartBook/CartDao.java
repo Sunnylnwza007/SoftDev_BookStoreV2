@@ -16,74 +16,76 @@ import org.bson.Document;
  * @author dell
  */
 public class CartDao {
-    public Cart searchCart(String user){
-        Cart c = new Cart();
-        MongoCollection<Document> cart = db.getCollection("cart");
+    public Cart searchCart (String user) {
+        Cart cart = new Cart();
+        MongoCollection <Document> cartCollection = db.getCollection("cart");
         Document findCart = new Document("user",user);
-        MongoCursor<Document> cursor = cart.find(findCart).iterator();
+        MongoCursor <Document> cursor = cartCollection.find(findCart).iterator();
+        
         try {
-            while (cursor.hasNext()) {
+            while ( cursor.hasNext() ) {
                 Document doc = cursor.next();
                 String bookName = doc.getString("bookname");
                 String num = doc.getString("num");
                 String price = doc.getString("price");
-                c.addBookName(bookName);
-                c.addNum(num);
-                c.addPrice(price);
+                cart.addBookName(bookName);
+                cart.addNum(num);
+                cart.addPrice(price);
                 
             }
-        } finally {}
-        
-        return c;
+        } 
+        finally {}  
+        return cart;
     }
     
-    public void deleteBook(String bookName,String num,String price){
-         MongoCollection<Document> cart = db.getCollection("cart");
+    public void deleteBook (String bookName,String num,String price) {
+         MongoCollection <Document> cartCollection = db.getCollection("cart");
          Document findBook = new Document("bookname",bookName).append("num", num).append("price", price);
-         cart.findOneAndDelete(findBook);
+         cartCollection.findOneAndDelete(findBook);
     }
     
-    public void addAddress(Address ad,String user){
+    public void addAddress(Address address,String user) {       
         MongoCollection<Document> addressCol = db.getCollection("address");
         Document findAddress = new Document("user",user);
-        Document insert = new Document("user",user).append("housenum", ad.getHouseNum()).append("mo", ad.getMo())
-                .append("tumbon", ad.getTumbon()).append("aumper", ad.getAumper()).append("provide", ad.getProvide())
-                .append("postcode", ad.getPostcode()).append("tel", ad.getTel());
+        Document insert = new Document("user",user).append("houseNum", address.getHouseNum()).append("villageNo", address.getVillageNo())
+                .append("subDistrict", address.getSubDistrict()).append("district", address.getDistrict()).append("province", address.getProvince())
+                .append("postcode", address.getPostcode()).append("tel", address.getTel());
         MongoCursor<Document> cursor = addressCol.find(findAddress).iterator();
-        if (cursor.hasNext()){
+        
+        if ( cursor.hasNext() ) {
             addressCol.findOneAndDelete(findAddress);
             addressCol.insertOne(insert);
-        }else{
-            addressCol.insertOne(insert);
         }
-        
+        else {
+            addressCol.insertOne(insert);
+        }     
     }
     
-    public Address setAddress(String user){
-        Address ad = new Address();
-        MongoCollection<Document> address = db.getCollection("address");
+    public Address setAddress (String user) {
+        Address address = new Address();
+        MongoCollection<Document> addressCollection = db.getCollection("address");
         Document findAddress = new Document("user",user);
-        MongoCursor<Document> cursor = address.find(findAddress).iterator();
+        MongoCursor<Document> cursor = addressCollection.find(findAddress).iterator();
         try {
-            while (cursor.hasNext()) {
+            while ( cursor.hasNext() ) {
                 Document doc = cursor.next();
-                String houseNum = doc.getString("housenum");
-                String mo = doc.getString("mo");
-                String tumbon = doc.getString("tumbon");
-                String aumper = doc.getString("aumper");
-                String provide = doc.getString("provide");
+                String houseNum = doc.getString("houseNum");
+                String villageNo = doc.getString("villageNo");
+                String subDistrict = doc.getString("subDistrict");
+                String district = doc.getString("district");
+                String province = doc.getString("province");
                 String postcode = doc.getString("postcode");
                 String tel = doc.getString("tel");
-                ad.setHouseNum(houseNum);
-                ad.setMo(mo);
-                ad.setTumbon(tumbon);
-                ad.setAumper(aumper);
-                ad.setProvide(provide);
-                ad.setPostcode(postcode);
-                ad.setTel(tel);
+                address.setHouseNum(houseNum);
+                address.setVillageNo(villageNo);
+                address.setSubDistrict(subDistrict);
+                address.setDistrict(district);
+                address.setProvince(province);
+                address.setPostcode(postcode);
+                address.setTel(tel);
             }
-        } finally {}
-        
-        return ad;
+        } 
+        finally {}     
+        return address;
     }
 }

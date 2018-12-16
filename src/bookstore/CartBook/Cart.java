@@ -12,39 +12,39 @@ import java.util.ArrayList;
  * @author dell
  */
 public class Cart {
-    ArrayList<String> bookName = new ArrayList<String>();
-    ArrayList<String> num = new ArrayList<String>();
-    ArrayList<String> price = new ArrayList<String>();
+    ArrayList <String> bookName = new ArrayList<String>();
+    ArrayList <String> num = new ArrayList<String>();
+    ArrayList <String> price = new ArrayList<String>();
     
-     public void addBookName(String bookname){
+     public void addBookName (String bookname) {
          this.bookName.add(bookname);
      }
      
-     public void addNum(String num){
+     public void addNum (String num) {
          this.num.add(num);
      }
      
-     public void addPrice(String price){
+     public void addPrice(String price) {
         this.price.add(price);
      }
      
-     public String getBookName (int i){
+     public String getBookName (int i) {
          return bookName.get(i);
      }
      
-      public String getNum (int i){
+      public String getNum (int i) {
          return num.get(i);
      }
       
-      public String getPrice (int i){
+      public String getPrice (int i) {
          return price.get(i);
      }
      
-     public int count(){
+     public int count() {
          return bookName.size();
      }
      
-     public void delList (int i){
+     public void delList (int i) {
          bookName.remove(i);
          num.remove(i);
          price.remove(i);

@@ -15,26 +15,28 @@ import bookstore.Book.Book;
  */
 public class SearchBookService {
     
-    public static void getBook(int i){
+    public static void getBook (int i) {
         SearchBookDAO.getBookById(i);
     };
     
-    public static String getListOfBook(int i){
+    public static String getListOfBook (int i) {
         return SearchBookDAO.listOfBook.get(i);
     }
     
-    public static int getBookName(String type, String txt){
-        if(type.equals("name")){
+    public static int getBookName (String type, String txt) {
+        if ( type.equals("name") ) {
             return SearchBookDAO.getBookByName(txt);
-        }else if (type.equals("writer")){
+        }
+        else if ( type.equals("writer") ) {
             return SearchBookDAO.getBookByWriter(txt);
-        }else{
+        }
+        else {
             return 0;
         }
         
     }
     
-    public static void resetInformation(){
+    public static void resetInformation() {
         Book.id = ""; 
         Book.name = ""; 
         Book.publisher = "";

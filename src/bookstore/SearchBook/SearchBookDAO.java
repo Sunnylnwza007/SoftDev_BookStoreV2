@@ -26,11 +26,12 @@ public class SearchBookDAO {
     
     static ArrayList<String> listOfBook = new ArrayList<>();
     
-    public static void getBookById(int i){
+    public static void getBookById (int i) {
         
-        MongoCollection<Document> room = db.getCollection("book");
+        MongoCollection<Document> book = db.getCollection("book");
         Document findBook = new Document("book_id",Integer.toString(i));
-        MongoCursor<Document> cursor = room.find(findBook).iterator();
+        MongoCursor<Document> cursor = book.find(findBook).iterator();
+        
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
@@ -58,105 +59,103 @@ public class SearchBookDAO {
                 Book.setISBN(isbn);
                 Book.setAmount(amount);
                 Book.setWritenum(writenum);
-           
-       
+                  
             }
-        } finally {}
+        } 
+         finally {}
     }
     
-    public static int getBookByName(String txt){
-        int count = 0;
+    public static int getBookByName (String txt) {
+        int countBook = 0; 
         listOfBook.clear();
         
-        MongoCollection<Document> room = db.getCollection("book");
-
-        MongoCursor<Document> cursor = room.find().iterator();
+        MongoCollection<Document> book = db.getCollection("book");
+        MongoCursor<Document> cursor = book.find().iterator();
+        
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
                 String name = doc.getString("name");
                 
-                if (name.contains(txt)){
-                String book_id = doc.getString("book_id");       
-                String price = doc.getString("price");
-                String writer = doc.getString("writer");
-                String publisher = doc.getString("publisher");
-                String type = doc.getString("doc_type");
-                String writeyear = doc.getString("writeyear");
-                String page = doc.getString("page");
-                String isbn = doc.getString("isbn");
-                String amount = doc.getString("amount");     
-                String writenum = doc.getString("writenum");
+                if (name.contains(txt)) {
+                    String book_id = doc.getString("book_id");       
+                    String price = doc.getString("price");
+                    String writer = doc.getString("writer");
+                    String publisher = doc.getString("publisher");
+                    String type = doc.getString("doc_type");
+                    String writeyear = doc.getString("writeyear");
+                    String page = doc.getString("page");
+                    String isbn = doc.getString("isbn");
+                    String amount = doc.getString("amount");     
+                    String writenum = doc.getString("writenum");
                 
-                Book.setId(book_id);
-                Book.setName(name);
-                Book.setPrice(price);
-                Book.setWriter(writer);
-                Book.setPublisher(publisher);
-                Book.setType(type);
-                Book.setWriteyear(writeyear);
-                Book.setPage(page);
-                Book.setISBN(isbn);
-                Book.setAmount(amount);
-                Book.setWritenum(writenum);
+                    Book.setId(book_id);
+                    Book.setName(name);
+                    Book.setPrice(price);
+                    Book.setWriter(writer);
+                    Book.setPublisher(publisher);
+                    Book.setType(type);
+                    Book.setWriteyear(writeyear);
+                    Book.setPage(page);
+                    Book.setISBN(isbn);
+                    Book.setAmount(amount);
+                    Book.setWritenum(writenum);
         
-                listOfBook.add(book_id+ "/" + name + "/" + price);
+                    listOfBook.add(book_id+ "/" + name + "/" + price);               
+                    countBook++;
                 
-                count++;
-                }
-       
+                }       
             }
-        }finally {}
+        }
+         finally {}
 
-         return count;
+         return countBook;
     }
     
-    public static int getBookByWriter(String txt){
-        int count = 0;
+    public static int getBookByWriter (String txt) {
+        int countBook = 0;
         listOfBook.clear();
         
-        MongoCollection<Document> room = db.getCollection("book");
+        MongoCollection<Document> book = db.getCollection("book");   
+        MongoCursor<Document> cursor = book.find().iterator();
         
-        MongoCursor<Document> cursor = room.find().iterator();
          try {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
                 String writer = doc.getString("writer");
                 
-                if (writer.contains(txt)){
-                String book_id = doc.getString("book_id");
-                String name = doc.getString("name");
-                String price = doc.getString("price");  
-                String publisher = doc.getString("publisher");
-                String type = doc.getString("doc_type");
-                String writeyear = doc.getString("writeyear");
-                String page = doc.getString("page");
-                String isbn = doc.getString("isbn");
-                String amount = doc.getString("amount");
-                String writenum = doc.getString("writenum");
+                if (writer.contains(txt)) {
+                    String book_id = doc.getString("book_id");
+                    String name = doc.getString("name");
+                    String price = doc.getString("price");  
+                    String publisher = doc.getString("publisher");
+                    String type = doc.getString("doc_type");
+                    String writeyear = doc.getString("writeyear");
+                    String page = doc.getString("page");
+                    String isbn = doc.getString("isbn");
+                    String amount = doc.getString("amount");
+                    String writenum = doc.getString("writenum");
                 
-                Book.setId(book_id);
-                Book.setName(name);
-                Book.setPrice(price);
-                Book.setWriter(writer);
-                Book.setPublisher(publisher);
-                Book.setType(type);
-                Book.setWriteyear(writeyear);
-                Book.setPage(page);
-                Book.setISBN(isbn);
-                Book.setAmount(amount);
-                Book.setWritenum(writenum);
+                    Book.setId(book_id);
+                    Book.setName(name);
+                    Book.setPrice(price);
+                    Book.setWriter(writer);
+                    Book.setPublisher(publisher);
+                    Book.setType(type);
+                    Book.setWriteyear(writeyear);
+                    Book.setPage(page);
+                    Book.setISBN(isbn);
+                    Book.setAmount(amount);
+                    Book.setWritenum(writenum);
                 
-                listOfBook.add(book_id+ "/" + name + "/" + price);
-                
-                count++;
+                    listOfBook.add(book_id+ "/" + name + "/" + price);               
+                    countBook++;
                 }
-       
             }
-        } finally {}
-
+        } 
+         finally {}
          
-         return count;
+         return countBook;
     }
     
 }

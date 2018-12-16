@@ -5,17 +5,40 @@
  */
 package bookstore.AllBook;
 
+import bookstore.Book.BookDAO;
+import bookstore.Main;
+import bookstore.AllBook.AllBookService;
+import bookstore.Book.Book;
+import bookstore.Book.BookService;
+import bookstore.Detail.detailBook;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author N A T M A N
  */
 public class AllBook extends javax.swing.JFrame {
 
+    static int countAllbook = BookService.getCountAllBook();
+    static int allBookInPage = 0;
+    int countBook = 0;
+
     /**
      * Creates new form AllBook
      */
     public AllBook() {
+        System.out.println("endpage"+ "" + AllBookService.pageEnd);
+        System.out.println("count all Book  " + countAllbook);
         initComponents();
+        this.setSize(1200, 700);
+        setLocationRelativeTo(null);
+        page.setText(Integer.toString(AllBookService.getPage()));
+        checkScollTap();
+
+        setLitsBook();
+        setBookAllPage();
+
     }
 
     /**
@@ -27,108 +50,327 @@ public class AllBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        P8 = new javax.swing.JLabel();
-        P7 = new javax.swing.JLabel();
-        P6 = new javax.swing.JLabel();
-        P5 = new javax.swing.JLabel();
-        N8 = new javax.swing.JLabel();
-        M8 = new javax.swing.JLabel();
-        M7 = new javax.swing.JLabel();
-        N7 = new javax.swing.JLabel();
-        N6 = new javax.swing.JLabel();
-        M6 = new javax.swing.JLabel();
-        M5 = new javax.swing.JLabel();
-        N5 = new javax.swing.JLabel();
+        img4 = new javax.swing.JLabel();
+        img3 = new javax.swing.JLabel();
+        img2 = new javax.swing.JLabel();
+        img1 = new javax.swing.JLabel();
+        nameBook4 = new javax.swing.JLabel();
+        priceBook4 = new javax.swing.JLabel();
+        priceBook3 = new javax.swing.JLabel();
+        nameBook3 = new javax.swing.JLabel();
+        nameBook2 = new javax.swing.JLabel();
+        priceBook2 = new javax.swing.JLabel();
+        priceBook1 = new javax.swing.JLabel();
+        nameBook1 = new javax.swing.JLabel();
         close1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        img8 = new javax.swing.JLabel();
+        img7 = new javax.swing.JLabel();
+        img6 = new javax.swing.JLabel();
+        img5 = new javax.swing.JLabel();
+        nameBook8 = new javax.swing.JLabel();
+        priceBook8 = new javax.swing.JLabel();
+        priceBook7 = new javax.swing.JLabel();
+        nameBook7 = new javax.swing.JLabel();
+        nameBook6 = new javax.swing.JLabel();
+        priceBook6 = new javax.swing.JLabel();
+        priceBook5 = new javax.swing.JLabel();
+        nameBook5 = new javax.swing.JLabel();
+        page = new javax.swing.JLabel();
+        nextPage = new javax.swing.JLabel();
+        beforePage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
-        P8.setBackground(new java.awt.Color(0, 0, 0));
-        P8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/5.jpg"))); // NOI18N
-        P8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(P8);
-        P8.setBounds(740, 200, 120, 160);
+        img4.setBackground(new java.awt.Color(0, 0, 0));
+        img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img4MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img4);
+        img4.setBounds(940, 170, 120, 160);
 
-        P7.setBackground(new java.awt.Color(0, 0, 0));
-        P7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/9.jpg"))); // NOI18N
-        P7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(P7);
-        P7.setBounds(530, 200, 120, 160);
+        img3.setBackground(new java.awt.Color(0, 0, 0));
+        img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img3);
+        img3.setBounds(670, 170, 120, 160);
 
-        P6.setBackground(new java.awt.Color(0, 0, 0));
-        P6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/3.jpg"))); // NOI18N
-        P6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(P6);
-        P6.setBounds(320, 200, 120, 160);
+        img2.setBackground(new java.awt.Color(0, 0, 0));
+        img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img2);
+        img2.setBounds(390, 170, 120, 160);
 
-        P5.setBackground(new java.awt.Color(0, 0, 0));
-        P5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Book/12.jpg"))); // NOI18N
-        P5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(P5);
-        P5.setBounds(110, 200, 120, 160);
+        img1.setBackground(new java.awt.Color(0, 0, 0));
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img1);
+        img1.setBounds(120, 170, 120, 160);
 
-        N8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        N8.setText("ไม่พบข้อมูล");
-        getContentPane().add(N8);
-        N8.setBounds(740, 380, 170, 19);
+        nameBook4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook4.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook4);
+        nameBook4.setBounds(940, 340, 170, 19);
 
-        M8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        M8.setText("ไม่พบข้อมูล");
-        getContentPane().add(M8);
-        M8.setBounds(740, 410, 120, 19);
+        priceBook4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook4.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook4);
+        priceBook4.setBounds(940, 360, 120, 19);
 
-        M7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        M7.setText("ไม่พบข้อมูล");
-        getContentPane().add(M7);
-        M7.setBounds(530, 410, 120, 19);
+        priceBook3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook3.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook3);
+        priceBook3.setBounds(670, 360, 120, 19);
 
-        N7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        N7.setText("ไม่พบข้อมูล");
-        getContentPane().add(N7);
-        N7.setBounds(530, 380, 170, 19);
+        nameBook3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook3.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook3);
+        nameBook3.setBounds(670, 340, 170, 19);
 
-        N6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        N6.setText("ไม่พบข้อมูล");
-        getContentPane().add(N6);
-        N6.setBounds(320, 380, 170, 19);
+        nameBook2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook2.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook2);
+        nameBook2.setBounds(390, 340, 170, 19);
 
-        M6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        M6.setText("ไม่พบข้อมูล");
-        getContentPane().add(M6);
-        M6.setBounds(320, 410, 120, 19);
+        priceBook2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook2.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook2);
+        priceBook2.setBounds(390, 360, 120, 19);
 
-        M5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        M5.setText("ไม่พบข้อมูล");
-        getContentPane().add(M5);
-        M5.setBounds(110, 410, 120, 19);
+        priceBook1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook1.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook1);
+        priceBook1.setBounds(120, 360, 120, 19);
 
-        N5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        N5.setText("ไม่พบข้อมูล");
-        getContentPane().add(N5);
-        N5.setBounds(110, 380, 170, 19);
+        nameBook1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook1.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook1);
+        nameBook1.setBounds(120, 340, 170, 19);
 
-        close1.setText("close");
+        close1.setText("Back");
         close1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 close1ActionPerformed(evt);
             }
         });
         getContentPane().add(close1);
-        close1.setBounds(1040, 630, 100, 40);
+        close1.setBounds(1050, 630, 100, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/ไฟล์_001.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/AllBook.PNG"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1200, 160);
+        jLabel1.setBounds(0, 0, 1200, 130);
+
+        img8.setBackground(new java.awt.Color(0, 0, 0));
+        img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img8MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img8);
+        img8.setBounds(940, 400, 120, 160);
+
+        img7.setBackground(new java.awt.Color(0, 0, 0));
+        img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img7MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img7);
+        img7.setBounds(670, 400, 120, 160);
+
+        img6.setBackground(new java.awt.Color(0, 0, 0));
+        img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img6MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img6);
+        img6.setBounds(390, 400, 120, 160);
+
+        img5.setBackground(new java.awt.Color(0, 0, 0));
+        img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/011.jpg"))); // NOI18N
+        img5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        img5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                img5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(img5);
+        img5.setBounds(120, 400, 120, 160);
+
+        nameBook8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook8.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook8);
+        nameBook8.setBounds(940, 570, 170, 19);
+
+        priceBook8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook8.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook8);
+        priceBook8.setBounds(940, 590, 120, 19);
+
+        priceBook7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook7.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook7);
+        priceBook7.setBounds(670, 590, 120, 19);
+
+        nameBook7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook7.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook7);
+        nameBook7.setBounds(670, 570, 170, 19);
+
+        nameBook6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook6.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook6);
+        nameBook6.setBounds(390, 570, 170, 19);
+
+        priceBook6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook6.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook6);
+        priceBook6.setBounds(390, 590, 120, 19);
+
+        priceBook5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        priceBook5.setText("ไม่พบข้อมูล");
+        getContentPane().add(priceBook5);
+        priceBook5.setBounds(120, 590, 120, 19);
+
+        nameBook5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nameBook5.setText("ไม่พบข้อมูล");
+        getContentPane().add(nameBook5);
+        nameBook5.setBounds(120, 570, 170, 19);
+
+        page.setText("0");
+        getContentPane().add(page);
+        page.setBounds(580, 620, 29, 30);
+
+        nextPage.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nextPage.setText("> > > >");
+        nextPage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextPageMouseClicked(evt);
+            }
+        });
+        getContentPane().add(nextPage);
+        nextPage.setBounds(620, 620, 70, 30);
+
+        beforePage.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        beforePage.setText("< < < <");
+        beforePage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                beforePageMouseClicked(evt);
+            }
+        });
+        getContentPane().add(beforePage);
+        beforePage.setBounds(510, 620, 80, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void setLitsBook() {
+        for ( int i = 1 ; i <= countAllbook; i++ ) {
+            AllBookService.setlistAllBook(i);
+        }
+    }
     private void close1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close1ActionPerformed
-        // TODO add your handling code here:
+        Main main = new Main();
+        main.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_close1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void nextPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextPageMouseClicked
+        AllBookService.setPage(0);
+
+        checkScollTap();
+        page.setText(Integer.toString(AllBookService.getPage()));
+        setBookAllPage();
+
+
+    }//GEN-LAST:event_nextPageMouseClicked
+
+    private void beforePageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_beforePageMouseClicked
+        AllBookService.setPage(1);
+
+        checkScollTap();
+        page.setText(Integer.toString(AllBookService.getPage()));
+        setBookAllPage();
+
+
+    }//GEN-LAST:event_beforePageMouseClicked
+
+    private void img1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img1MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img1.getText());
+    }//GEN-LAST:event_img1MouseClicked
+
+    private void img2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img2MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img2.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img2MouseClicked
+
+    private void img3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img3MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img3.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img3MouseClicked
+
+    private void img4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img4MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img4.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img4MouseClicked
+
+    private void img5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img5MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img5.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img5MouseClicked
+
+    private void img6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img6MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img6.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img6MouseClicked
+
+    private void img7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img7MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img7.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img7MouseClicked
+
+    private void img8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_img8MouseClicked
+        detailBook detailBook = new detailBook();
+        detailBook.openProductDetailUI(img8.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_img8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -165,20 +407,208 @@ public class AllBook extends javax.swing.JFrame {
         });
     }
 
+    public void setVisbleImg() {
+        img1.setVisible(false);
+        img2.setVisible(false);
+        img3.setVisible(false);
+        img4.setVisible(false);
+        img5.setVisible(false);
+        img6.setVisible(false);
+        img7.setVisible(false);
+        img8.setVisible(false);
+
+    }
+
+    public void setVisbleTextName() {
+        nameBook1.setVisible(false);
+        nameBook2.setVisible(false);
+        nameBook3.setVisible(false);
+        nameBook4.setVisible(false);
+        nameBook5.setVisible(false);
+        nameBook6.setVisible(false);
+        nameBook7.setVisible(false);
+        nameBook8.setVisible(false);
+
+    }
+
+    public void setVisblePrice() {
+        priceBook1.setVisible(false);
+        priceBook2.setVisible(false);
+        priceBook3.setVisible(false);
+        priceBook4.setVisible(false);
+        priceBook5.setVisible(false);
+        priceBook6.setVisible(false);
+        priceBook7.setVisible(false);
+        priceBook8.setVisible(false);
+    }
+
+    void checkScollTap() {
+        if ( AllBookService.getPage() == 1 ) {
+            beforePage.setVisible(false);
+        } 
+        else {
+            beforePage.setVisible(true);
+        }
+        
+        if ( AllBookService.getPage() == AllBookService.pageEnd ) {
+            nextPage.setVisible(false);
+        } 
+        else {
+            nextPage.setVisible(true);
+        }
+    }
+
+    public void setBookAllPage() {
+        setVisbleImg();
+        setVisbleTextName();
+        setVisblePrice();
+        int bookOnPage = 8;
+        int i = 0;
+        allBookInPage = bookOnPage * AllBookService.getPage();
+
+        try {
+
+            for ( i = i + allBookInPage - 7 ; i <= allBookInPage ; i++ ) {
+                String Id = Integer.toString(i);
+
+                if ( i == allBookInPage - 7 ) {
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img1.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook1.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook1.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img1.setText(Id);
+                    countBook++;
+                    img1.setVisible(true);
+                    nameBook1.setVisible(true);
+                    priceBook1.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 6 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img2.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook2.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook2.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img2.setText(Id);
+                    countBook++;
+                    img2.setVisible(true);
+                    nameBook2.setVisible(true);
+                    priceBook2.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 5 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img3.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook3.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook3.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img3.setText(Id);
+                    countBook++;
+                    img3.setVisible(true);
+                    nameBook3.setVisible(true);
+                    priceBook3.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 4 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img4.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook4.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook4.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img4.setText(Id);
+                    countBook++;
+                    img4.setVisible(true);
+                    nameBook4.setVisible(true);
+                    priceBook4.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 3 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img5.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook5.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook5.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img5.setText(Id);
+                    countBook++;
+                    img5.setVisible(true);
+                    nameBook5.setVisible(true);
+                    priceBook5.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 2 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img6.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook6.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook6.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img6.setText(Id);
+                    countBook++;
+                    img6.setVisible(true);
+                    nameBook6.setVisible(true);
+                    priceBook6.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 1 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img7.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook7.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook7.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img7.setText(Id);
+                    countBook++;
+                    img7.setVisible(true);
+                    nameBook7.setVisible(true);
+                    priceBook7.setVisible(true);
+                } 
+                else if ( i == allBookInPage - 0 ) {
+
+                    ImageIcon icon = new ImageIcon(".\\src\\Pic\\Book\\" + i + ".jpg");
+                    Image scaleImage = icon.getImage().getScaledInstance(116, 171, Image.SCALE_DEFAULT);
+                    img8.setIcon(new javax.swing.ImageIcon(scaleImage));
+                    nameBook8.setText(AllBookService.getNameBookById( i - 1 ));
+                    priceBook8.setText("Price : " + AllBookService.getPriceBookById( i - 1 ));
+                    img8.setText(Id);
+                    countBook++;
+                    img8.setVisible(true);
+                    nameBook8.setVisible(true);
+                    priceBook8.setVisible(true);
+                }
+
+            }
+        } catch (IndexOutOfBoundsException e) {
+
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel M5;
-    private javax.swing.JLabel M6;
-    private javax.swing.JLabel M7;
-    private javax.swing.JLabel M8;
-    private javax.swing.JLabel N5;
-    private javax.swing.JLabel N6;
-    private javax.swing.JLabel N7;
-    private javax.swing.JLabel N8;
-    private javax.swing.JLabel P5;
-    private javax.swing.JLabel P6;
-    private javax.swing.JLabel P7;
-    private javax.swing.JLabel P8;
+    private javax.swing.JLabel beforePage;
     private javax.swing.JButton close1;
+    private javax.swing.JLabel img1;
+    private javax.swing.JLabel img2;
+    private javax.swing.JLabel img3;
+    private javax.swing.JLabel img4;
+    private javax.swing.JLabel img5;
+    private javax.swing.JLabel img6;
+    private javax.swing.JLabel img7;
+    private javax.swing.JLabel img8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel nameBook1;
+    private javax.swing.JLabel nameBook2;
+    private javax.swing.JLabel nameBook3;
+    private javax.swing.JLabel nameBook4;
+    private javax.swing.JLabel nameBook5;
+    private javax.swing.JLabel nameBook6;
+    private javax.swing.JLabel nameBook7;
+    private javax.swing.JLabel nameBook8;
+    private javax.swing.JLabel nextPage;
+    private javax.swing.JLabel page;
+    private javax.swing.JLabel priceBook1;
+    private javax.swing.JLabel priceBook2;
+    private javax.swing.JLabel priceBook3;
+    private javax.swing.JLabel priceBook4;
+    private javax.swing.JLabel priceBook5;
+    private javax.swing.JLabel priceBook6;
+    private javax.swing.JLabel priceBook7;
+    private javax.swing.JLabel priceBook8;
     // End of variables declaration//GEN-END:variables
 }

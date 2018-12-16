@@ -44,25 +44,25 @@ public class CartBook extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        mo = new javax.swing.JTextField();
+        villageNo = new javax.swing.JTextField();
         houseNum = new javax.swing.JTextField();
-        tumbon = new javax.swing.JTextField();
+        subDistrict = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        aumper = new javax.swing.JTextField();
+        district = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        provide = new javax.swing.JTextField();
+        province = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         postcode = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         tel = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -116,17 +116,13 @@ public class CartBook extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(800, 450, 80, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/ตะกร้า.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 1000, 110);
-
         table.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ชื่อหนังสือ", "จำนวน", "ราคา"
+                "Book name", "Number of books", "Price"
             }
         ));
         jScrollPane1.setViewportView(table);
@@ -151,31 +147,31 @@ public class CartBook extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(20, 440, 90, 16);
 
-        mo.addActionListener(new java.awt.event.ActionListener() {
+        villageNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moActionPerformed(evt);
+                villageNoActionPerformed(evt);
             }
         });
-        getContentPane().add(mo);
-        mo.setBounds(110, 470, 120, 24);
+        getContentPane().add(villageNo);
+        villageNo.setBounds(110, 470, 120, 24);
         getContentPane().add(houseNum);
         houseNum.setBounds(110, 410, 120, 24);
-        getContentPane().add(tumbon);
-        tumbon.setBounds(110, 440, 120, 24);
+        getContentPane().add(subDistrict);
+        subDistrict.setBounds(110, 440, 120, 24);
 
         jLabel8.setText("District");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(250, 410, 50, 16);
-        getContentPane().add(aumper);
-        aumper.setBounds(330, 410, 120, 24);
+        getContentPane().add(district);
+        district.setBounds(330, 410, 120, 24);
 
         jLabel9.setText("Province");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(250, 440, 60, 16);
-        getContentPane().add(provide);
-        provide.setBounds(330, 440, 120, 24);
+        getContentPane().add(province);
+        province.setBounds(330, 440, 120, 24);
 
-        jLabel10.setText("Postal Code");
+        jLabel10.setText("Post Code");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(250, 470, 70, 16);
         getContentPane().add(postcode);
@@ -183,7 +179,7 @@ public class CartBook extends javax.swing.JFrame {
 
         jLabel11.setText("Tel");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(460, 410, 40, 16);
+        jLabel11.setBounds(470, 410, 40, 16);
         getContentPane().add(tel);
         tel.setBounds(510, 410, 120, 24);
 
@@ -195,6 +191,10 @@ public class CartBook extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5);
         jButton5.setBounds(710, 450, 80, 40);
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/Shoppping.PNG"))); // NOI18N
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(0, 0, 1000, 100);
 
         pack();
         setLocationRelativeTo(null);
@@ -209,18 +209,22 @@ public class CartBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        int total = setSum();
+        new bookstore.Bill.Bill(cart.bookName,cart.num,cart.price,total).setVisible(true);
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void moActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moActionPerformed
+    private void villageNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_villageNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_moActionPerformed
+    }//GEN-LAST:event_villageNoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         CartService cartService = new CartService();
         cart = cartService.searchCart(User.getName());
+        if (cart.count() >0 ){
         setTable();
         setSum();
+        }
         setAddress();
 
     }//GEN-LAST:event_formWindowOpened
@@ -234,21 +238,21 @@ public class CartBook extends javax.swing.JFrame {
         cart.delList(table.getSelectedRow());
         setTable();
         setSum();
-        JOptionPane.showMessageDialog(null, "ลบข้อมูลเรียบร้อย");
+        JOptionPane.showMessageDialog(null, "Delete data successfully");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         address.setHouseNum(houseNum.getText());
-        address.setMo(mo.getText());
-        address.setTumbon(tumbon.getText());
-        address.setAumper(aumper.getText());
-        address.setProvide(provide.getText());
+        address.setVillageNo(villageNo.getText());
+        address.setSubDistrict(subDistrict.getText());
+        address.setDistrict(district.getText());
+        address.setProvince(province.getText());
         address.setPostcode(postcode.getText());
         address.setTel(tel.getText());
         CartService cs = new CartService();
         cs.addAddress(address, User.getName());
-        JOptionPane.showMessageDialog(null, "บันทึกข้อมูลเรียบร้อย");
+        JOptionPane.showMessageDialog(null, "Save completed");
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -291,24 +295,29 @@ public class CartBook extends javax.swing.JFrame {
         System.out.println(cart.getBookName(0));
         System.out.println(cart.getNum(0));
         System.out.println(cart.getPrice(0));
-        String[] tblHead = {"Book Name", "Qty", "Peice"};
+        String[] tblHead = { "Book name", "Number of book", "Price" };
         tableModel = new DefaultTableModel(tblHead, 0);
-        for (int i = 0; i < cart.count(); i++) {
+        for ( int i = 0; i < cart.count(); i++ ) {
             String[] item = {cart.getBookName(i), cart.getNum(i), cart.getPrice(i)};
             tableModel.addRow(item);
-        }
+            }
+        
         table.setModel(tableModel);
+        
 
     }
 
-    public void setSum() {
+    public int setSum() {
         int sumPrice = 0;
-        for (int count = 0; count < tableModel.getRowCount(); count++) {
+        
+        for ( int count = 0; count < tableModel.getRowCount(); count++ ) {
             int num = Integer.parseInt(tableModel.getValueAt(count, 1).toString());
             int price = Integer.parseInt(tableModel.getValueAt(count, 2).toString());
             sumPrice += num * price;
         }
         sum.setText(String.valueOf(sumPrice));
+        
+        return sumPrice;
 
     }
 
@@ -316,17 +325,17 @@ public class CartBook extends javax.swing.JFrame {
         CartService cs = new CartService();
         address = cs.setAddress(User.getName());
         houseNum.setText(address.getHouseNum());
-        mo.setText(address.getMo());
-        tumbon.setText(address.getTumbon());
-        aumper.setText(address.getAumper());
-        provide.setText(address.getProvide());
+        villageNo.setText(address.getVillageNo());
+        subDistrict.setText(address.getSubDistrict());
+        district.setText(address.getDistrict());
+        province.setText(address.getProvince());
         postcode.setText(address.getPostcode());
         tel.setText(address.getTel());
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField aumper;
+    private javax.swing.JTextField district;
     private javax.swing.JTextField houseNum;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -335,8 +344,8 @@ public class CartBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -344,12 +353,12 @@ public class CartBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField mo;
     private javax.swing.JTextField postcode;
-    private javax.swing.JTextField provide;
+    private javax.swing.JTextField province;
+    private javax.swing.JTextField subDistrict;
     private javax.swing.JTextField sum;
     private javax.swing.JTable table;
     private javax.swing.JTextField tel;
-    private javax.swing.JTextField tumbon;
+    private javax.swing.JTextField villageNo;
     // End of variables declaration//GEN-END:variables
 }

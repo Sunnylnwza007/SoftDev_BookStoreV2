@@ -93,23 +93,23 @@ public class detailBook extends javax.swing.JFrame {
 
         jLabel1.setText("Publisher");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(390, 110, 90, 30);
+        jLabel1.setBounds(390, 130, 90, 30);
 
         jLabel2.setText("Author");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(390, 160, 60, 20);
+        jLabel2.setBounds(390, 180, 90, 30);
 
         jLabel3.setText("Type");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(390, 210, 70, 20);
+        jLabel3.setBounds(390, 230, 90, 30);
 
         jLabel4.setText("Price");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(390, 260, 50, 20);
+        jLabel4.setBounds(390, 280, 90, 30);
 
         jLabel5.setText("Status");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(390, 310, 60, 20);
+        jLabel5.setBounds(390, 330, 90, 30);
 
         jLabel6.setText("Order number");
         getContentPane().add(jLabel6);
@@ -117,63 +117,64 @@ public class detailBook extends javax.swing.JFrame {
 
         jLabel7.setText("ISBN");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(670, 120, 50, 20);
+        jLabel7.setBounds(640, 130, 120, 30);
 
         jLabel8.setText("Number of pages");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(640, 170, 110, 20);
+        jLabel8.setBounds(640, 180, 120, 30);
 
         jLabel9.setText("Print");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(660, 220, 70, 30);
+        jLabel9.setBounds(640, 230, 120, 30);
 
         jLabel10.setText("Published year");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(660, 270, 60, 20);
+        jLabel10.setBounds(640, 280, 120, 30);
         getContentPane().add(imagelb);
         imagelb.setBounds(70, 70, 270, 350);
 
-        bookNamelb.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        bookNamelb.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        bookNamelb.setForeground(new java.awt.Color(51, 51, 51));
         bookNamelb.setText("bookName");
         bookNamelb.setEnabled(false);
         getContentPane().add(bookNamelb);
-        bookNamelb.setBounds(500, 30, 230, 30);
+        bookNamelb.setBounds(500, 40, 240, 50);
 
         publishYearlb.setText("1");
         getContentPane().add(publishYearlb);
-        publishYearlb.setBounds(760, 270, 110, 20);
+        publishYearlb.setBounds(790, 290, 110, 20);
 
         publisherlb.setText("1");
         getContentPane().add(publisherlb);
-        publisherlb.setBounds(500, 114, 140, 20);
+        publisherlb.setBounds(500, 140, 100, 20);
 
         authorlb.setText("1");
         getContentPane().add(authorlb);
-        authorlb.setBounds(500, 164, 140, 20);
+        authorlb.setBounds(500, 190, 100, 20);
 
         typeBooklb.setText("1");
         getContentPane().add(typeBooklb);
-        typeBooklb.setBounds(500, 214, 130, 20);
+        typeBooklb.setBounds(500, 240, 100, 20);
 
         pricelb.setText("1");
         getContentPane().add(pricelb);
-        pricelb.setBounds(500, 264, 140, 20);
+        pricelb.setBounds(500, 290, 100, 20);
 
         amountlb.setText("1");
         getContentPane().add(amountlb);
-        amountlb.setBounds(500, 314, 150, 20);
+        amountlb.setBounds(500, 340, 100, 20);
 
         ISBNlb.setText("1");
         getContentPane().add(ISBNlb);
-        ISBNlb.setBounds(760, 120, 160, 20);
+        ISBNlb.setBounds(790, 140, 110, 20);
 
         numPagelb.setText("1");
         getContentPane().add(numPagelb);
-        numPagelb.setBounds(760, 170, 160, 20);
+        numPagelb.setBounds(790, 190, 110, 20);
 
         writeNumlb.setText("1");
         getContentPane().add(writeNumlb);
-        writeNumlb.setBounds(760, 220, 130, 30);
+        writeNumlb.setBounds(790, 240, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,8 +182,8 @@ public class detailBook extends javax.swing.JFrame {
     private void addToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartActionPerformed
         detailBookService detail = new detailBookService();
         
-                String numOrder = numOrderSpinner.getValue().toString();
-                detail.addToCart(User.getName() ,Book.getName(), numOrder, Book.getPrice());
+        String numOrder = numOrderSpinner.getValue().toString();
+        detail.addToCart(User.getName() ,Book.getName(), numOrder, Book.getPrice());
                 
     }//GEN-LAST:event_addToCartActionPerformed
 
@@ -254,7 +255,7 @@ public class detailBook extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
-    public void openProductDetailUI(String idBook){
+    public void openProductDetailUI (String idBook) {
     
         detailBookService ds = new detailBookService();
         ds.setProductDetail(idBook);
@@ -263,24 +264,25 @@ public class detailBook extends javax.swing.JFrame {
         Image scaleImage = icon.getImage().getScaledInstance(200, 250, Image.SCALE_DEFAULT);
         imagelb.setIcon(new javax.swing.ImageIcon(scaleImage));
         
-         bookNamelb.setText(Book.getName());
-         publisherlb.setText(Book.getPublisher());
-         authorlb.setText(Book.getWriter());
-         pricelb.setText(Book.getPrice());
-         typeBooklb.setText(Book.getType());
-         publishYearlb.setText(Book.getWriteyear());
-         ISBNlb.setText(Book.getISBN());
-         writeNumlb.setText(Book.getWritenum());
-         numPagelb.setText(Book.getPage());
+        bookNamelb.setText(Book.getName());
+        publisherlb.setText(Book.getPublisher());
+        authorlb.setText(Book.getWriter());
+        pricelb.setText(Book.getPrice());
+        typeBooklb.setText(Book.getType());
+        publishYearlb.setText(Book.getWriteyear());
+        ISBNlb.setText(Book.getISBN());
+        writeNumlb.setText(Book.getWritenum());
+        numPagelb.setText(Book.getPage());
          
-         if(Integer.parseInt(Book.getAmount()) > 0){
-             amountlb.setText("มี");
-         }else{
-             amountlb.setText("ไม่มี");
-         }
+        if( Integer.parseInt(Book.getAmount()) > 0 ) {
+             amountlb.setText("In stock");
+        }
+        else {
+             amountlb.setText("Out of stock");
+        }
          
          
          
-         this.setVisible(true);
+        this.setVisible(true);
     }
 }
